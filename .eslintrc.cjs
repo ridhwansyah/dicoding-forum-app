@@ -6,6 +6,18 @@ module.exports = {
   extends: [
     'airbnb',
   ],
+  overrides: [
+    {
+      files: ['cypress/**/*.cy.js'],
+      extends: ['plugin:cypress/recommended'],
+    },
+    {
+      files: ['src/__tests__/**/*.js', 'src/__tests__/**/*.jsx'],
+      env: {
+        jest: true,
+      },
+    },
+  ],
   plugins: [
     'react',
     'react-hooks',
