@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import api from '../api/api';
 import { showLoading, hideLoading } from './loadingSlice';
 
@@ -10,8 +11,10 @@ export const loginUser = createAsyncThunk(
       const data = await api.login(email, password);
       localStorage.setItem('token', data.token);
       const profile = await api.getOwnProfile();
+      toast.success('Login berhasil!');
       return profile.user;
     } catch (err) {
+      toast.error(err.message);
       return rejectWithValue(err.message);
     } finally {
       dispatch(hideLoading());
@@ -25,8 +28,10 @@ export const registerUser = createAsyncThunk(
     try {
       dispatch(showLoading());
       await api.register(name, email, password);
+      toast.success('Registrasi berhasil! Silakan login.');
       return true;
     } catch (err) {
+      toast.error(err.message);
       return rejectWithValue(err.message);
     } finally {
       dispatch(hideLoading());
