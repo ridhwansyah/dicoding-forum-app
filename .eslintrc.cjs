@@ -17,6 +17,14 @@ module.exports = {
         jest: true,
       },
     },
+    {
+      files: ['cypress.config.js', 'vite.config.js', 'babel.config.cjs', 'jest.config.cjs', 'jest.setup.cjs'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'import/no-unresolved': 'off',
+        'no-unused-vars': 'off',
+      },
+    },
   ],
   plugins: [
     'react',

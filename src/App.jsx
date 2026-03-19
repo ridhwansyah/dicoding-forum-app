@@ -1,6 +1,7 @@
 import { StrictMode, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
 import { fetchProfile, logout } from './store/authSlice';
 import Navigation from './components/Navigation';
 import LoadingBar from './components/LoadingBar';
@@ -78,6 +79,7 @@ function AppContent() {
     <div className="app-shell">
       <Navigation />
       <LoadingBar />
+      <Toaster position="top-center" />
       <div className="app-content">
         <Routes>
           <Route path="/" element={<ThreadsPage />} />
